@@ -31,16 +31,17 @@ cur = con.cursor()
 #      COURSE CHAR(50),
 #      DEPARTMENT CHAR(50));''')
 
-cur.execute("SELECT admission, name, age, course, department from STUDENT")
+cur.execute('''INSERT INTO magnetometr ("YR", "Bz") VALUES (2022, 12.3)''')
+con.commit()
+
+cur.execute('''SELECT * from magnetometr ORDER BY "id" DESC LIMIT 5''')
+
+
+
 
 rows = cur.fetchall()
 for row in rows:
-    print("ADMISSION =", row[0])
-    print("NAME =", row[1])
-    print("AGE =", row[2])
-    print("COURSE =", row[3])
-    print("DEPARTMENT =", row[4], "\n")
+    print(*row)
 
-
-# con.commit()
+cur.close()
 con.close()
